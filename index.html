@@ -17,12 +17,18 @@
 			[v-cloak] {
 				display: none;
 			}
+			input {
+				margin: 10px;
+				display: block;
+			}
 		</style>
 	</head>
 	<body>
 		<div id="app" v-cloak>
 			{{greeting}}
-			<input @keyup.enter="greet(greeting+'!!!!!!!!')" v-model="greeting" />
+
+			<login-form />
+
 			<hr />
 
 			<button @click="toggleBox">Toggle Box</button>
@@ -45,6 +51,20 @@
 				greet(greeting) {
 					console.log(greeting);
 				},
+			},
+		});
+		app.component("login-form", {
+			template: `
+		          <div>
+                  <h1>{{title}}</h1>
+		          <input type="email"/>
+		          <input type="password"/>
+		          </div>
+		          `,
+			data() {
+				return {
+					title: "Login Form",
+				};
 			},
 		});
 		app.mount("#app");
