@@ -22,7 +22,7 @@
 	<body>
 		<div id="app" v-cloak>
 			{{greeting}}
-			<input v-model="greeting" />
+			<input @keyup.enter="greet" v-model="greeting" />
 			<hr />
 
 			<button @click="toggleBox">Toggle Box</button>
@@ -41,6 +41,9 @@
 			methods: {
 				toggleBox() {
 					this.isVisible = !this.isVisible;
+				},
+				greet() {
+					console.log(this.greeting);
 				},
 			},
 		});
